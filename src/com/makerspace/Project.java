@@ -1,24 +1,22 @@
 package com.makerspace;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class Project {
-	public String projectName;
-	public String projectCategory;
 	
-	public String contactName;
-	public String contactEmail;
+	public static enum Category {
+		SCIENCE;
+	}
 	
-	public int stlFileCount;
-	public String stlFileUrl;
+	public String name;
+	public String url;
 	
-	public String printerType;
-	public String filamentType;
-	public String filamentBrand;
+	public Category category;
+	public Contact contact = new Contact();
 	
-	public int extruderTemp;
-	public int printBedTemp;
+	public LinkedHashMap<String, ProjectFile> files = new LinkedHashMap<>();
+	public ArrayList<Print> prints = new ArrayList<>();
 	
-	public List<String> attribution;
-	public String attributionContact;
+	
 }

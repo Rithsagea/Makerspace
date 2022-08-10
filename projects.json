@@ -1,0 +1,50 @@
+{
+  "name": "Tactile DNA",
+  "url": "https://www.thingiverse.com/thing:4780524",
+  "category": "SCIENCE",
+  "contact": {
+    "name": "Ian Matty",
+    "email": "LakerMakerClub@gmail.com"
+  },
+  "files": {
+    "phosphate": {
+      "name": "Phosphate",
+      "fileUrl": "https://cdn.thingiverse.com/assets/a7/ed/04/7a/fc/Phosphate_2mm.stl",
+      "imageUrl": "https://cdn.thingiverse.com/assets/6f/7a/e6/af/ea/featured_preview_Phosphate_2mm.png"
+    },
+    "thymine": {
+      "name": "Thymine",
+      "fileUrl": "https://cdn.thingiverse.com/assets/46/fb/02/70/0c/Thymine_2mm.stl",
+      "imageUrl": "https://cdn.thingiverse.com/assets/94/ae/98/4b/c7/featured_preview_Thymine_2mm.png"
+    },
+    "deoxyribose": {
+      "name": "Deoxyribose",
+      "fileUrl": "https://cdn.thingiverse.com/assets/0e/36/e6/89/a2/Deoxyribose_Solid.stl",
+      "imageUrl": "https://cdn.thingiverse.com/assets/58/1b/8d/cf/a7/featured_preview_Deoxyribose_Solid.png"
+    }
+  },
+  "prints": [
+    {
+      "printId": "deoxyribose",
+      "timestamp": 1660153638586,
+      "notes": "Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were.",
+      "printerType": "MONOPRICE_ULTIMATE_2",
+      "filamentType": "PLA",
+      "filamentBrand": "HATCHBOX",
+      "extruderTemperature": 205,
+      "printBedTemperature": 53,
+      "options": {
+        "Print Orientation": "vertical, as is",
+        "Layer Height": "0.20mm",
+        "Initial Layer Height": "0.20mm",
+        "Number of Walls": "2",
+        "Number of Top Layers": "4",
+        "Number of Bottom Layers": "4",
+        "Infill %": "25",
+        "Supports": "Everywhere, 60% angle",
+        "Bed Adhesion": "Raft",
+        "Enable Retraction": "Yes"
+      }
+    }
+  ]
+}
