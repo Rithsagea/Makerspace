@@ -1,4 +1,4 @@
-package com.makerspace;
+package com.makerspace.types;
 
 public class ProjectFile {
 	public String name;

@@ -26,8 +26,7 @@
   "prints": [
     {
       "printId": "deoxyribose",
-      "timestamp": 1660153638586,
-      "notes": "Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were.",
+      "timestamp": 1663541506779,
       "printerType": "MONOPRICE_ULTIMATE_2",
       "filamentType": "PLA",
       "filamentBrand": "HATCHBOX",
@@ -41,10 +40,11 @@
         "Number of Top Layers": "4",
         "Number of Bottom Layers": "4",
         "Infill %": "25",
-        "Supports": "Everywhere, 60% angle",
+        "Supports": "Everywhere, 60% Angle",
         "Bed Adhesion": "Raft",
         "Enable Retraction": "Yes"
-      }
+      },
+      "notes": "Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were."
     }
   ]
 }

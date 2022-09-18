@@ -1,4 +1,4 @@
-package com.makerspace;
+package com.makerspace.types;
 
 public class Contact {
 	public String name;

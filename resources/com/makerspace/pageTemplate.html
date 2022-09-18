@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <title>${name}</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <h1>${name}</h1>
+  <div>
+    <h2>Info</h2>
+    Category: ${category}<br>
+    Source: ${url}<br>
+    Author: ${contact.name} <${contact.email}>
+  </div>
+  <h2>Files</h2>
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>File</th>
+        <th>Image</th>
+      </tr>
+${fileData}
+    </table>
+  </div>
+  <h2>Prints</h2>
+  <div>
+    <table>
+      <tr>
+        <th>Print Type</th>
+        <th>Timestamp</th>
+        <th>Printer Type</th>
+        <th>Filament Type</th>
+        <th>Filament Brand</th>
+        <th>Extruder Temperature</th>
+        <th>Print Bed Temperature</th>
+        <th>Options</th>
+        <th>Notes</th>
+      </tr>
+${printData}
+    </table>
+  </div>
+</body>
+</html>
