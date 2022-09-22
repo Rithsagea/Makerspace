@@ -1,4 +1,5 @@
 # Notes
+Let me know if you ever want my help Winston
 Possibly remove retraction as a setting
 Potentially create an FAQ
 Clean up instructions: Potentially also add to FAQ
