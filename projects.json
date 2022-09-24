@@ -1,50 +1,76 @@
 {
-  "name": "Tactile DNA",
-  "url": "https://www.thingiverse.com/thing:4780524",
-  "category": "SCIENCE",
-  "contact": {
-    "name": "Ian Matty",
-    "email": "LakerMakerClub@gmail.com"
-  },
-  "files": {
-    "phosphate": {
-      "name": "Phosphate",
-      "fileUrl": "https://cdn.thingiverse.com/assets/a7/ed/04/7a/fc/Phosphate_2mm.stl",
-      "imageUrl": "https://cdn.thingiverse.com/assets/6f/7a/e6/af/ea/featured_preview_Phosphate_2mm.png"
+  "099056f1-311f-4d9e-967f-dc98f5a7f4a7": {
+    "id": {
+      "timestamp": 1664050412,
+      "counter": 6817944,
+      "randomValue1": 4752165,
+      "randomValue2": 10655
     },
-    "thymine": {
-      "name": "Thymine",
-      "fileUrl": "https://cdn.thingiverse.com/assets/46/fb/02/70/0c/Thymine_2mm.stl",
-      "imageUrl": "https://cdn.thingiverse.com/assets/94/ae/98/4b/c7/featured_preview_Thymine_2mm.png"
+    "name": "Tactile DNA",
+    "url": "https://www.thingiverse.com/thing:4780524",
+    "category": "SCIENCE",
+    "contact": {
+      "name": "Ian Matty",
+      "email": "LakerMakerClub@gmail.com"
     },
-    "deoxyribose": {
-      "name": "Deoxyribose",
-      "fileUrl": "https://cdn.thingiverse.com/assets/0e/36/e6/89/a2/Deoxyribose_Solid.stl",
-      "imageUrl": "https://cdn.thingiverse.com/assets/58/1b/8d/cf/a7/featured_preview_Deoxyribose_Solid.png"
-    }
-  },
-  "prints": [
-    {
-      "printId": "deoxyribose",
-      "timestamp": 1663541506779,
-      "printerType": "MONOPRICE_ULTIMATE_2",
-      "filamentType": "PLA",
-      "filamentBrand": "HATCHBOX",
-      "extruderTemperature": 205,
-      "printBedTemperature": 53,
-      "options": {
-        "Print Orientation": "vertical, as is",
-        "Layer Height": "0.20mm",
-        "Initial Layer Height": "0.20mm",
-        "Number of Walls": "2",
-        "Number of Top Layers": "4",
-        "Number of Bottom Layers": "4",
-        "Infill %": "25",
-        "Supports": "Everywhere, 60% Angle",
-        "Bed Adhesion": "Raft",
-        "Enable Retraction": "Yes"
+    "files": {
+      "phosphate": {
+        "name": "Phosphate",
+        "fileUrl": "https://cdn.thingiverse.com/assets/a7/ed/04/7a/fc/Phosphate_2mm.stl",
+        "imageUrl": "https://cdn.thingiverse.com/assets/6f/7a/e6/af/ea/featured_preview_Phosphate_2mm.png"
       },
-      "notes": "Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were."
-    }
-  ]
+      "thymine": {
+        "name": "Thymine",
+        "fileUrl": "https://cdn.thingiverse.com/assets/46/fb/02/70/0c/Thymine_2mm.stl",
+        "imageUrl": "https://cdn.thingiverse.com/assets/94/ae/98/4b/c7/featured_preview_Thymine_2mm.png"
+      },
+      "deoxyribose": {
+        "name": "Deoxyribose",
+        "fileUrl": "https://cdn.thingiverse.com/assets/0e/36/e6/89/a2/Deoxyribose_Solid.stl",
+        "imageUrl": "https://cdn.thingiverse.com/assets/58/1b/8d/cf/a7/featured_preview_Deoxyribose_Solid.png"
+      }
+    },
+    "prints": [
+      {
+        "printId": "deoxyribose",
+        "timestamp": 1663541506779,
+        "printerType": "MONOPRICE_ULTIMATE_2",
+        "filamentType": "PLA",
+        "filamentBrand": "HATCHBOX",
+        "slicerType": "CURA",
+        "extruderTemperature": 205,
+        "printBedTemperature": 53,
+        "options": {
+          "Print Orientation": "vertical, as is",
+          "Layer Height": "0.20mm",
+          "Initial Layer Height": "0.20mm",
+          "Number of Walls": "2",
+          "Number of Top Layers": "4",
+          "Number of Bottom Layers": "4",
+          "Infill %": "25",
+          "Supports": "Everywhere, 60% Angle",
+          "Bed Adhesion": "Raft",
+          "Enable Retraction": "Yes"
+        },
+        "notes": "Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were."
+      }
+    ]
+  },
+  "accdc856-065d-44a0-b868-27f8b3fe580d": {
+    "id": {
+      "timestamp": 1664050412,
+      "counter": 6817945,
+      "randomValue1": 4752165,
+      "randomValue2": 10655
+    },
+    "name": "Human Skeleton",
+    "url": "https://www.thingiverse.com/thing:1528540",
+    "category": "SCIENCE",
+    "contact": {
+      "name": "Ian Matty",
+      "email": "LakerMakersClub@gmail.com"
+    },
+    "files": {},
+    "prints": []
+  }
 }
