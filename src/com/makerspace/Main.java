@@ -10,9 +10,9 @@ public class Main {
 		Database db = Database.getInstance();
 		db.load();
 		
-//		Project proj = db.listProjects().stream()
-//				.filter(p -> p.name.equals("Human Skeleton"))
-//				.findFirst().get();
+		Project proj = db.listProjects().stream()
+				.filter(p -> p.name.equals("Human Skeleton"))
+				.findFirst().get();
 		
 		//do stuff
 		
