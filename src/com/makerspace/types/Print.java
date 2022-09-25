@@ -4,23 +4,19 @@ import java.util.LinkedHashMap;
 
 public class Print {
 	public static enum PrinterType {
-		NONE,
-		MONOPRICE_ULTIMATE_2;
+		NONE, MONOPRICE_ULTIMATE_2, PRUSA_MINI;
 	}
 
 	public static enum FilamentType {
-		NONE,
-		PLA;
+		NONE, PLA;
 	}
 
 	public static enum FilamentBrand {
-		NONE,
-		HATCHBOX;
+		NONE, HATCHBOX;
 	}
-	
+
 	public static enum SlicerType {
-		NONE,
-		CURA;
+		NONE, CURA, PRUSA;
 	}
 
 	public String printId = "";
