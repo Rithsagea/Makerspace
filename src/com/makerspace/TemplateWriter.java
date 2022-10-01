@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.apache.commons.text.StringSubstitutor;
@@ -22,13 +24,31 @@ public class TemplateWriter {
 	private String printEntryTemplate;
 	private String printOptionEntryTemplate;
 
+	private String indexTemplate;
+	private String indexProjectTemplate;
+
+	private Set<Project> projects = new TreeSet<>();
+
+	private String getResource(String name) {
+		try {
+			return Files.readAllLines(Paths.get(getClass().getResource(name).toURI())).stream().collect(Collectors.joining("\n"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public TemplateWriter() {
 		try {
-			pageTemplate = Files.readAllLines(Paths.get(getClass().getResource("pageTemplate.html").toURI())).stream().collect(Collectors.joining("\n"));
-			fileEntryTemplate = Files.readAllLines(Paths.get(getClass().getResource("fileEntryTemplate.html").toURI())).stream().collect(Collectors.joining("\n"));
-			printEntryTemplate = Files.readAllLines(Paths.get(getClass().getResource("printEntryTemplate.html").toURI())).stream().collect(Collectors.joining("\n"));
-			printOptionEntryTemplate = Files.readAllLines(Paths.get(getClass().getResource("printOptionEntryTemplate.html").toURI())).stream().collect(Collectors.joining("\n"));
-		} catch (IOException | URISyntaxException e) {
+			pageTemplate = getResource("pageTemplate.html");
+			fileEntryTemplate = getResource("fileEntryTemplate.html");
+			printEntryTemplate = getResource("printEntryTemplate.html");
+			printOptionEntryTemplate = getResource("printOptionEntryTemplate.html");
+
+			indexTemplate = getResource("indexTemplate.html");
+			indexProjectTemplate = getResource("indexProjectTemplate.html");
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0); // program will not work if these don't load properly
 		}
@@ -45,6 +65,8 @@ public class TemplateWriter {
 	}
 	
 	public String write(Project project) {
+		projects.add(project);
+
 		Gson gson = new Gson();
 		Map<String, String> valueMap = new LinkedHashMap<>();
 		addToMap("", valueMap, gson.toJsonTree(project).getAsJsonObject());
@@ -90,5 +112,26 @@ public class TemplateWriter {
 		new StringSubstitutor(valueMap).replaceIn(page);
 		
 		return page.toString();
+	}
+
+	public String getIndex() {
+		Map<String, String> valueMap = new LinkedHashMap<>();
+		
+		StringBuilder projects = new StringBuilder();
+		this.projects.forEach(proj -> {
+			StringBuilder sb = new StringBuilder(indexProjectTemplate);
+			Map<String, String> map = new LinkedHashMap<>();
+			map.put("projectUrl", "./" + proj.id + ".html");
+			map.put("projectName", proj.name);
+
+			new StringSubstitutor(map).replaceIn(sb);
+			projects.append(sb.toString());
+			projects.append("\n");
+		});
+		valueMap.put("projectData", projects.toString());
+
+		StringBuilder page = new StringBuilder(indexTemplate);
+		new StringSubstitutor(valueMap).replaceIn(page);
+		return page.toString();		
 	}
 }

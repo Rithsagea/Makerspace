@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
-public class Project {
+public class Project implements Comparable<Project> {
 
 	public static enum Category {
 		NONE,
@@ -24,5 +24,10 @@ public class Project {
 
 	public LinkedHashMap<String, ProjectFile> files = new LinkedHashMap<>();
 	public ArrayList<Print> prints = new ArrayList<>();
+
+	@Override
+	public int compareTo(Project o) {
+		return name.compareTo(o.name);
+	}
 
 }
