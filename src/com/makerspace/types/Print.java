@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 public class Print {
 	public static enum PrinterType {
-		NONE, MONOPRICE_ULTIMATE_2, PRUSA_MINI;
+		NONE, MONOPRICE_ULTIMATE_2, PRUSA_MINI_PLUS, PRUSA_MK3_PLUS, CREALITY_ENDER;
 	}
 
 	public static enum FilamentType {

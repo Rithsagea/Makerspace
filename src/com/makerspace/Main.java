@@ -10,20 +10,13 @@ import java.util.List;
 
 import com.makerspace.database.Config;
 import com.makerspace.database.Database;
-import com.makerspace.types.Project;
 public class Main {
 	
 	public static void main(String[] args) {
 		Config.init("config.properties");
 		Database db = Database.getInstance();
 		db.load();
-		
-		Project proj = db.listProjects().stream()
-				.filter(p -> p.name.equals("Human Skeleton"))
-				.findFirst().get();
-		
-		//do stuff
-		
+
 		//export site
 		TemplateWriter templateWriter = new TemplateWriter();
 		db.listProjects().forEach(p -> {
