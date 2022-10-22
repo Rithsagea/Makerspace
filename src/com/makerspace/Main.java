@@ -10,14 +10,15 @@ import java.util.List;
 
 import com.makerspace.database.Config;
 import com.makerspace.database.Database;
+
 public class Main {
-	
+
 	public static void main(String[] args) {
 		Config.init("config.properties");
 		Database db = Database.getInstance();
 		db.load();
 
-		//export site
+		// export site
 		TemplateWriter templateWriter = new TemplateWriter();
 		db.listProjects().forEach(p -> {
 			try {
@@ -29,12 +30,16 @@ public class Main {
 		});
 
 		try {
-			Files.copy(Paths.get(Main.class.getResource("style.css").toURI()), Paths.get("output/style.css"), StandardCopyOption.REPLACE_EXISTING);
-			Files.write(Paths.get("output/index.html"), Arrays.asList(templateWriter.getIndex().split("\n")), StandardCharsets.UTF_8);
+			Files.copy(Paths.get(Main.class.getResource("style.css").toURI()), Paths.get("output/style.css"),
+					StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(Paths.get(Main.class.getResource("scripts.js").toURI()), Paths.get("output/scripts.js"),
+					StandardCopyOption.REPLACE_EXISTING);
+			Files.write(Paths.get("output/index.html"), Arrays.asList(templateWriter.getIndex().split("\n")),
+					StandardCharsets.UTF_8);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		db.save();
 
 	}
