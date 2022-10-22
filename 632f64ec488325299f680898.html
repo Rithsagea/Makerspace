@@ -1,58 +1,71 @@
 <html lang="en">
+
 <head>
-  <title>Tactile DNA</title>
-  <link href="style.css" rel="stylesheet">
+	<title>Tactile DNA</title>
+	<link href="style.css" rel="stylesheet" />
+	<script src="scripts.js" defer></script>
 </head>
+<div id="navbar">
+	<a href="index.html">Home</a>
+</div>
+
 <body>
-  <h1>Tactile DNA</h1>
-  <div>
-		<a href="./index.html">Home</a><br>
-    <h2>Info</h2>
-    Category: SCIENCE<br>
-    Source: https://www.thingiverse.com/thing:4780524<br>
-    Author: Ian Matty <LakerMakerClub@gmail.com>
-  </div>
-  <h2>Files</h2>
-  <div>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>File</th>
-        <th>Image</th>
-      </tr>
-      <tr>
-        <td>Phosphate</td>
-        <td><a href="https://cdn.thingiverse.com/assets/a7/ed/04/7a/fc/Phosphate_2mm.stl">Download</a></td>
+	<h1>Tactile DNA</h1>
+	<ul class="tabs">
+		<li data-tab-target="#info" class="active tab">Info</li>
+		<li data-tab-target="#files" class="tab">Files</li>
+		<li data-tab-target="#prints" class="tab">Prints</li>
+	</ul>
+	<div id="info" data-tab-content class="active">
+		<h2>Info</h2>
+		Category: SCIENCE<br />
+		Source: https://www.thingiverse.com/thing:4780524<br />
+		Author: Ian Matty <LakerMakerClub@gmail.com>
+	</div>
+	<div id="files" data-tab-content>
+		<h2>Files</h2>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>File</th>
+					<th>Image</th>
+				</tr>
+							<tr>
+				<td>Phosphate</td>
+				<td><a href="https://cdn.thingiverse.com/assets/a7/ed/04/7a/fc/Phosphate_2mm.stl">Download</a></td>
         <td><img src="https://cdn.thingiverse.com/assets/6f/7a/e6/af/ea/featured_preview_Phosphate_2mm.png" alt="Phosphate"></td>
       </tr>
-      <tr>
-        <td>Thymine</td>
-        <td><a href="https://cdn.thingiverse.com/assets/46/fb/02/70/0c/Thymine_2mm.stl">Download</a></td>
+			<tr>
+				<td>Thymine</td>
+				<td><a href="https://cdn.thingiverse.com/assets/46/fb/02/70/0c/Thymine_2mm.stl">Download</a></td>
         <td><img src="https://cdn.thingiverse.com/assets/94/ae/98/4b/c7/featured_preview_Thymine_2mm.png" alt="Thymine"></td>
       </tr>
-      <tr>
-        <td>Deoxyribose</td>
-        <td><a href="https://cdn.thingiverse.com/assets/0e/36/e6/89/a2/Deoxyribose_Solid.stl">Download</a></td>
+			<tr>
+				<td>Deoxyribose</td>
+				<td><a href="https://cdn.thingiverse.com/assets/0e/36/e6/89/a2/Deoxyribose_Solid.stl">Download</a></td>
         <td><img src="https://cdn.thingiverse.com/assets/58/1b/8d/cf/a7/featured_preview_Deoxyribose_Solid.png" alt="Deoxyribose"></td>
       </tr>
 
-    </table>
-  </div>
-  <h2>Prints</h2>
-  <div>
-    <table>
-      <tr>
-        <th>Print Type</th>
-        <th>Timestamp</th>
-        <th>Printer Type</th>
-        <th>Filament Type</th>
-        <th>Filament Brand</th>
-        <th>Extruder Temperature</th>
-        <th>Print Bed Temperature</th>
-        <th>Options</th>
-        <th>Notes</th>
-      </tr>
-      <tr>
+			</table>
+		</div>
+	</div>
+	<div id="prints" data-tab-content>
+		<h2>Prints</h2>
+		<div>
+			<table>
+				<tr>
+					<th>Print Type</th>
+					<th>Timestamp</th>
+					<th>Printer Type</th>
+					<th>Filament Type</th>
+					<th>Filament Brand</th>
+					<th>Extruder Temperature</th>
+					<th>Print Bed Temperature</th>
+					<th>Options</th>
+					<th>Notes</th>
+				</tr>
+				      <tr>
         <td>deoxyribose</td>
         <td>1663541506779</td>
         <td>MONOPRICE_ULTIMATE_2</td>
@@ -112,7 +125,9 @@
         <td>Printing at 60% angle prevents Braille from having supports. Take tweezers and gently remove supports. Use mild sandpaper to smooth area where supports were.</td>
       </tr>
 
-    </table>
-  </div>
+			</table>
+		</div>
+	</div>
 </body>
+
 </html>

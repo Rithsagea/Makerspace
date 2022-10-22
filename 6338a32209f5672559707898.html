@@ -1,48 +1,61 @@
 <html lang="en">
+
 <head>
-  <title>Lower GI</title>
-  <link href="style.css" rel="stylesheet">
+	<title>Lower GI</title>
+	<link href="style.css" rel="stylesheet" />
+	<script src="scripts.js" defer></script>
 </head>
+<div id="navbar">
+	<a href="index.html">Home</a>
+</div>
+
 <body>
-  <h1>Lower GI</h1>
-  <div>
-		<a href="./index.html">Home</a><br>
-    <h2>Info</h2>
-    Category: NONE<br>
-    Source: https://www.thingiverse.com/thing:939511<br>
-    Author: Ian Matty <LakerMakersClub@gmail.com>
-  </div>
-  <h2>Files</h2>
-  <div>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>File</th>
-        <th>Image</th>
-      </tr>
-      <tr>
-        <td>Lower GI</td>
-        <td><a href="https://www.thingiverse.com/download:1484069">Download</a></td>
+	<h1>Lower GI</h1>
+	<ul class="tabs">
+		<li data-tab-target="#info" class="active tab">Info</li>
+		<li data-tab-target="#files" class="tab">Files</li>
+		<li data-tab-target="#prints" class="tab">Prints</li>
+	</ul>
+	<div id="info" data-tab-content class="active">
+		<h2>Info</h2>
+		Category: NONE<br />
+		Source: https://www.thingiverse.com/thing:939511<br />
+		Author: Ian Matty <LakerMakersClub@gmail.com>
+	</div>
+	<div id="files" data-tab-content>
+		<h2>Files</h2>
+		<div>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>File</th>
+					<th>Image</th>
+				</tr>
+							<tr>
+				<td>Lower GI</td>
+				<td><a href="https://cdn.thingiverse.com/assets/8e/c3/52/9b/65/Lower_GI.stl">Download</a></td>
         <td><img src="https://cdn.thingiverse.com/renders/8c/6a/37/21/d0/Lower_GI_preview_featured.jpg" alt="Lower GI"></td>
       </tr>
 
-    </table>
-  </div>
-  <h2>Prints</h2>
-  <div>
-    <table>
-      <tr>
-        <th>Print Type</th>
-        <th>Timestamp</th>
-        <th>Printer Type</th>
-        <th>Filament Type</th>
-        <th>Filament Brand</th>
-        <th>Extruder Temperature</th>
-        <th>Print Bed Temperature</th>
-        <th>Options</th>
-        <th>Notes</th>
-      </tr>
-      <tr>
+			</table>
+		</div>
+	</div>
+	<div id="prints" data-tab-content>
+		<h2>Prints</h2>
+		<div>
+			<table>
+				<tr>
+					<th>Print Type</th>
+					<th>Timestamp</th>
+					<th>Printer Type</th>
+					<th>Filament Type</th>
+					<th>Filament Brand</th>
+					<th>Extruder Temperature</th>
+					<th>Print Bed Temperature</th>
+					<th>Options</th>
+					<th>Notes</th>
+				</tr>
+				      <tr>
         <td>lower_gi</td>
         <td>1664657031816</td>
         <td>PRUSA_MINI_PLUS</td>
@@ -256,7 +269,9 @@
         <td></td>
       </tr>
 
-    </table>
-  </div>
+			</table>
+		</div>
+	</div>
 </body>
+
 </html>
