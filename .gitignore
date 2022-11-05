@@ -2,3 +2,4 @@
 /target/
 /config.properties
 output/*
+/formSite/projectServer/node_modules
