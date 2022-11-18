@@ -3,3 +3,4 @@
 /config.properties
 output/*
 /formSite/projectServer/node_modules
+/formsite/projectServer/uploads
