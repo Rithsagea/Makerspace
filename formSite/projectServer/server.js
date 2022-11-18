@@ -1,18 +1,19 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const multer = require('multer');
 const cors = require('cors');
 
 const app = express();
 const port = 8080;
+const upload = multer({ dest: 'uploads/' });
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.static('public'));
 
-app.post('/api/form', (req, res) => {
+app.post('/api/form', upload.any(), (req, res) => {
 	const form = req.body;
 
-	console.log(form);
+	console.log(req.body);
+	console.log(req.files);
 	res.send('Received form!');
 });
 

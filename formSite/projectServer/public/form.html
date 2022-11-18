@@ -17,7 +17,7 @@
 		<h1>Submit new Project</h1>
 		<hr>
 
-		<form action="http://localhost:8080/api/form" method="POST">
+		<form action="/api/form" method="POST" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label class="form-label" for="project-name">Project Name</label>
 				<input class="form-control" id="project-name" name="project-name">
@@ -31,7 +31,7 @@
 
 			<div class="mb-3 container border">
 				<h2>Project Files</h2>
-				<table class="table">
+				<table class="table" id="files">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -49,7 +49,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-primary">Add File</button>
+				<button type="button" id="add-file" class="btn btn-primary">Add File</button>
 			</div>
 
 			<button type="submit" class="btn btn-primary">Submit</button>
