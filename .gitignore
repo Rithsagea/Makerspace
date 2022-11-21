@@ -1,6 +1,4 @@
-/bin/
-/target/
 /config.properties
 output/*
-/formSite/projectServer/node_modules
-/formsite/projectServer/uploads
+node_modules
+uploads

@@ -1,6 +1,16 @@
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
+const { MongoClient } = require("mongodb");
+
+const { db_url } = require('./config.json');
+const client = new MongoClient(db_url);
+const db = client.db('makerspace');
+const projects = db.collection('projects');
+
+projects.find().forEach(doc => {
+	console.log(doc);
+});
 
 const app = express();
 const port = 8080;
