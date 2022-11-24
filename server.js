@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
@@ -8,22 +9,20 @@ const client = new MongoClient(db_url);
 const db = client.db('makerspace');
 const projects = db.collection('projects');
 
-projects.find().forEach(doc => {
-	console.log(doc);
-});
-
 const app = express();
 const port = 8080;
-const upload = multer({ dest: 'uploads/' });
+const upload = multer();
 
 app.use(cors());
 app.use(express.static('public'));
 
-app.post('/api/form', upload.any(), (req, res) => {
-	const form = req.body;
+app.get('/form', (req, res) => {
+	res.sendFile(path.join(__dirname, '/form.html'));
+});
 
-	console.log(req.body);
-	console.log(req.files);
+app.post('/api/form', upload.any(), (req, res) => {
+	console.log(req.body); // form info
+	console.log(req.files); // form files
 	res.send('Received form!');
 });
 
