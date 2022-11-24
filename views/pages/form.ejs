@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head'); %>
+		<title>Makerspace Project Form</title>
+		<script src="form.js"></script>
+</head>
+
+<body>
+	<header>
+		<%- include('../partials/header'); %>
+	</header>
+
+	<main>
+		<div class="container">
+			<hr>
+			<h1>Submit new Project</h1>
+			<hr>
+
+			<form action="/api/form" method="POST" enctype="multipart/form-data">
+				<!-- <form> -->
+				<div class="mb-3">
+					<label class="form-label" for="project-name">Project Name</label>
+					<input class="form-control" id="project-name" name="project-name">
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" for="project-source">Project Source</label>
+					<input class="form-control" id="project-source" name="project-source"
+						placeholder="https://www.thingiverse.com/thing:0000000">
+				</div>
+
+				<div class="mb-3 container border">
+					<h2>Project Files</h2>
+					<table class="table" id="files">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">File Name</th>
+								<th scope="col">File Description</th>
+								<th scope="col">File Upload</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td><input class="form-control" name="file-name"></td>
+								<td><textarea class="form-control text-area"></textarea></td>
+								<td><input class="form-control" type="file" name="file-upload"></td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" id="add-file" class="btn btn-primary">Add File</button>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</main>
+
+	<footer>
+		<%- include('../partials/footer'); %>
+	</footer>
+</body>
+
+</html>
