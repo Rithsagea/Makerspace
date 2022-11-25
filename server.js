@@ -45,7 +45,6 @@ app.get('/project/:projectId', (req, res) => {
 app.get('/file/:fileId', (req, res) => {
 	fileCollection.findOne({ '_id': ObjectId(req.params.fileId) }).then(file => {
 		var readStream = new stream.PassThrough();
-		console.log(file.data);
 		readStream.end(Buffer.from(file.data.buffer));
 
 		res.set('Content-disposition', 'attachment; filename=' + file.name);
