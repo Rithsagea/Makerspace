@@ -18,8 +18,9 @@ const port = 8000;
 const upload = multer();
 
 app.use(cors());
-app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use('/views', express.static(__dirname + '/views'));
 
 app.get('/', (req, res) => {
 	res.render('pages/index');
@@ -34,14 +35,14 @@ app.post('/api/form', upload.any(), (req, res) => {
 	console.log(req.files); // form files
 	res.send('Received form!');
 
-	const project = {
-		name: 'Lower GI',
-		category: 'Science',
-		attributions: ['cc', 'sharealike'],
-		designer: 'https://www.thingiverse.com/airforce/designs'
-	};
+	// const project = {
+	// 	name: 'Lower GI',
+	// 	category: 'Science',
+	// 	attributions: ['cc', 'sharealike'],
+	// 	designer: 'https://www.thingiverse.com/airforce/designs'
+	// };
 
-	addProject(project);
+	// addProject(project);
 });
 
 app.listen(port, () => {

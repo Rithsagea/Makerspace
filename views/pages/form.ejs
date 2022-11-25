@@ -18,22 +18,26 @@
 			<h1>Submit new Project</h1>
 			<hr>
 
-			<form action="/api/form" method="POST" enctype="multipart/form-data">
-				<!-- <form> -->
+			<form id="form" action="/api/form" method="POST" enctype="multipart/form-data">
+				<label class="form-label" for="project-name">Project Name</label>
 				<div class="mb-3">
-					<label class="form-label" for="project-name">Project Name</label>
 					<input class="form-control" id="project-name" name="project-name">
 				</div>
 
-				<div class="mb-3">
-					<label class="form-label" for="project-source">Project Source</label>
-					<input class="form-control" id="project-source" name="project-source"
-						placeholder="https://www.thingiverse.com/thing:0000000">
+				<label class="form-label" for="project-source">Project Source</label>
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon3">https://www.thingiverse.com/thing:</span>
+					<input class="form-control" id="project-source" name="project-source">
 				</div>
 
-				<div class="mb-3 container border">
+				<label class="form-label" for="attributions">Attributions</label>
+				<div class="mb-3">
+					<input class="form-control" id="attributions" name="attributions" placeholder="cc, sharealike">
+				</div>
+
+				<div class="container border mb-3 p-3">
 					<h2>Project Files</h2>
-					<table class="table" id="files">
+					<table class="files" id="files">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -43,12 +47,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td><input class="form-control" name="file-name"></td>
-								<td><textarea class="form-control text-area"></textarea></td>
-								<td><input class="form-control" type="file" name="file-upload"></td>
-							</tr>
+							<%- include('../partials/form-file', {num:1}); %>
 						</tbody>
 					</table>
 					<button type="button" id="add-file" class="btn btn-primary">Add File</button>
