@@ -1,8 +1,6 @@
-const path = require('path');
 const express = require('express');
-const multer = require('multer');
-const cors = require('cors');
 const { MongoClient } = require("mongodb");
+const bodyparser = require('body-parser'); //add
 
 const { db_url } = require('./config.json');
 const client = new MongoClient(db_url);
@@ -15,9 +13,10 @@ async function addProject(project) {
 
 const app = express();
 const port = 8000;
-const upload = multer();
 
-app.use(cors());
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true })) //ad
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use('/views', express.static(__dirname + '/views'));
@@ -30,16 +29,16 @@ app.get('/form', (req, res) => {
 	res.render('pages/form');
 });
 
-app.post('/api/form', upload.any(), (req, res) => {
-	console.log(req.body); // form info
-	console.log(req.files); // form files
+app.post('/api/form', (req, res) => {
+	console.log(req.body);
+
 	res.send('Received form!');
 
 	// const project = {
-	// 	name: 'Lower GI',
-	// 	category: 'Science',
-	// 	attributions: ['cc', 'sharealike'],
-	// 	designer: 'https://www.thingiverse.com/airforce/designs'
+	// 	name: req.body['project-name'],
+	// 	source: req.body['project-source'],
+	// 	attributions: req.body['attributions'],
+	// 	files: []
 	// };
 
 	// addProject(project);
