@@ -1,21 +1,21 @@
 const express = require('express');
+const multer = require('multer');
 const { MongoClient } = require("mongodb");
 const bodyparser = require('body-parser'); //add
 
 const { db_url } = require('./config.json');
 const client = new MongoClient(db_url);
 const db = client.db('makerspace');
-const projects = db.collection('projects');
-
-async function addProject(project) {
-	const res = await projects.insertOne(project);
-}
+const projectCollection = db.collection('projects');
+const fileCollection = db.collection('files');
 
 const app = express();
 const port = 8000;
 
+const upload = multer();
+
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true })) //ad
+app.use(bodyparser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -29,19 +29,21 @@ app.get('/form', (req, res) => {
 	res.render('pages/form');
 });
 
-app.post('/api/form', (req, res) => {
+app.post('/api/form', upload.any(), (req, res) => {
 	console.log(req.body);
-
 	res.send('Received form!');
+	projectCollection.insertOne(req.body);
+	console.log('Uploaded Project');
+});
 
-	// const project = {
-	// 	name: req.body['project-name'],
-	// 	source: req.body['project-source'],
-	// 	attributions: req.body['attributions'],
-	// 	files: []
-	// };
-
-	// addProject(project);
+app.post('/api/file', upload.any(), (req, res) => {
+	let file = req.files[0];
+	fileCollection.insertOne({
+		name: file.originalname,
+		data: file.buffer
+	}).then(result => {
+		res.send(result.insertedId.toString());
+	});
 });
 
 app.listen(port, () => {
