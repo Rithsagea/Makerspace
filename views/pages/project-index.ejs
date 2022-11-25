@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head'); %>
+	<title>Projects</title>
+</head>
+
+<body>
+	<header>
+		<%- include('../partials/header'); %>
+	</header>
+
+	<main>
+		<h1>Projects</h1>
+		<% projects.forEach(project => { %>
+		 <a href="/project/<%=project._id%>"><%=project.project_name%></a>
+		<% }) %>
+	</main>
+
+	<footer>
+		<%- include('../partials/footer'); %>
+	</footer>
+</body>
+
+</html>

@@ -30,6 +30,12 @@ app.get('/form', (req, res) => {
 	res.render('pages/form');
 });
 
+app.get('/project', (req, res) => {
+	projectCollection.find().toArray().then(projects => {
+		res.render('pages/project-index', { projects: projects });
+	});
+});
+
 app.get('/project/:projectId', (req, res) => {
 	projectCollection.findOne({ '_id': ObjectId(req.params.projectId) }).then(project => {
 		res.render('pages/project', project);
@@ -44,7 +50,7 @@ app.get('/file/:fileId', (req, res) => {
 
 		res.set('Content-disposition', 'attachment; filename=' + file.name);
 		res.set('Content-Type', 'text/plain');
-		
+
 		readStream.pipe(res);
 	});
 });
