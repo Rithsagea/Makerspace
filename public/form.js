@@ -22,8 +22,8 @@ async function uploadFile(file) {
 
 async function submitData(formData) {
 	var data = {
-		'project-name': formData.get('project-name'),
-		'project-source': formData.get('project-source'),
+		'project_name': formData.get('project_name'),
+		'project_source': formData.get('project_source'),
 		'attributions': formData.get('attributions'),
 		'files': []
 	};
@@ -32,9 +32,9 @@ async function submitData(formData) {
 	for (let i = 1; i < rows.length; i++) {
 		let file = {};
 
-		file['name'] = rows[i].querySelector(`input[name=file-name]`).value;
-		file['description'] = rows[i].querySelector(`textarea[name=file-description]`).value;
-		file['file'] = await uploadFile(rows[i].querySelector(`input[name=file-upload]`).files[0]);
+		file['name'] = rows[i].querySelector(`input[name=file_name]`).value;
+		file['description'] = rows[i].querySelector(`textarea[name=file_description]`).value;
+		file['file'] = await uploadFile(rows[i].querySelector(`input[name=file_upload]`).files[0]);
 		data.files.push(file);
 	}
 
@@ -46,7 +46,7 @@ async function submitData(formData) {
 		body: JSON.stringify(data)
 	});
 
-	alert(await res.text());
+	alert(`Uploaded Project! id:${await res.text()}`);
 }
 
 $(document).ready(() => {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head'); %>
+		<title>Makerspace</title>
+</head>
+
+<body>
+	<header>
+		<%- include('../partials/header'); %>
+	</header>
+
+	<main>
+		<h1>
+			<%= project_name%>
+		</h1>
+		<span>Attributions: <%= attributions%></span><br>
+		<a class="link-info" href="https://www.thingiverse.com/thing:<%= project_source%>">https://www.thingiverse.com/thing:<%=project_source%></a>
+	
+		<div>
+			<h2>Files</h2>
+			<% files.forEach(file => { %>
+			 <h3><%=file.name%></h3><br>
+			 <a href="/file/<%=file.file%>">Download</a><br>
+			 <span><%=file.description%></span>
+			<% }) %>
+		</div>
+	</main>
+
+	<footer>
+		<%- include('../partials/footer'); %>
+	</footer>
+</body>
+
+</html>

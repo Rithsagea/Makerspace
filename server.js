@@ -1,7 +1,8 @@
 const express = require('express');
 const multer = require('multer');
-const { MongoClient } = require("mongodb");
-const bodyparser = require('body-parser'); //add
+const { MongoClient, ObjectId } = require("mongodb");
+const bodyparser = require('body-parser');
+const stream = require('stream');
 
 const { db_url } = require('./config.json');
 const client = new MongoClient(db_url);
@@ -29,11 +30,31 @@ app.get('/form', (req, res) => {
 	res.render('pages/form');
 });
 
+app.get('/project/:projectId', (req, res) => {
+	projectCollection.findOne({ '_id': ObjectId(req.params.projectId) }).then(project => {
+		res.render('pages/project', project);
+	});
+});
+
+app.get('/file/:fileId', (req, res) => {
+	fileCollection.findOne({ '_id': ObjectId(req.params.fileId) }).then(file => {
+		var readStream = new stream.PassThrough();
+		console.log(file.data);
+		readStream.end(Buffer.from(file.data.buffer));
+
+		res.set('Content-disposition', 'attachment; filename=' + file.name);
+		res.set('Content-Type', 'text/plain');
+		
+		readStream.pipe(res);
+	});
+});
+
 app.post('/api/form', upload.any(), (req, res) => {
 	console.log(req.body);
-	res.send('Received form!');
-	projectCollection.insertOne(req.body);
-	console.log('Uploaded Project');
+	projectCollection.insertOne(req.body).then(result => {
+		res.send(result.insertedId.toJSON());
+		console.log(`Uploaded Project: ${result.insertedId.toString()}`);
+	});
 });
 
 app.post('/api/file', upload.any(), (req, res) => {
