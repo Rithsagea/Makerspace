@@ -12,17 +12,33 @@
 	</header>
 
 	<main>
-		<h1><%= project_name%></h1>
+		<h1>
+			<%= project_name%>
+		</h1>
 		<span>Attributions: <%= attributions%></span><br>
-		<a class="link-info" href="https://www.thingiverse.com/thing:<%= project_source%>">https://www.thingiverse.com/thing:<%=project_source%></a>
-	
+		<a class="link-info"
+			href="https://www.thingiverse.com/thing:<%= project_source%>">https://www.thingiverse.com/thing:
+			<%=project_source%>
+		</a>
+
 		<div>
 			<h2>Files</h2>
-			<% files.forEach(file => { %>
-			 <h3><%=file.name%></h3><br>
-			 <a href="/file/<%=file.file%>">Download</a><br>
-			 <span><%=file.description%></span>
-			<% }) %>
+			<table class="table">
+				<thead>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">Download</th>
+				</thead>
+				<tbody>
+					<% files.forEach(file=> { %>
+						<tr>
+							<td><%=file.name%></td>
+							<td><%=file.description%></td>
+							<td><a href="/file/<%=file.file%>" class="btn btn-primary">Download</a><br></td>
+						</tr>
+						<% }) %>
+				</tbody>
+			</table>
 		</div>
 	</main>
 
