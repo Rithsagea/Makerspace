@@ -32,7 +32,7 @@ app.get('/form', (req, res) => {
 
 app.get('/project', (req, res) => {
 	projectCollection.find().toArray().then(projects => {
-		res.render('pages/project-index', { projects: projects });
+		res.render('pages/project_index', { projects: projects });
 	});
 });
 
