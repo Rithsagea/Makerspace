@@ -4,14 +4,13 @@ const { MongoClient, ObjectId } = require("mongodb");
 const bodyparser = require('body-parser');
 const stream = require('stream');
 
-const { db_url } = require('./config.json');
+const { db_url, port } = require('./config.json');
 const client = new MongoClient(db_url);
 const db = client.db('makerspace');
 const projectCollection = db.collection('projects');
 const fileCollection = db.collection('files');
 
 const app = express();
-const port = 8000;
 
 const upload = multer();
 
