@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head'); %>
+		<title>Makerspace Project Form</title>
+</head>
+
+<body>
+	<header>
+		<%- include('../partials/header'); %>
+	</header>
+
+	<main>
+		<div class="container">
+			<hr>
+			<h1>Submit new Print</h1>
+			<hr>
+
+			<form id="form" action="/api/form" method="POST" enctype="multipart/form-data">
+				<label class="form-label" for="project_name">Print Name</label>
+				<div class="mb-3">
+					<input class="form-control" id="project_name" name="project_name">
+				</div>
+
+				<label class="form-label" for="project_source">Print Source</label>
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon3">https://www.thingiverse.com/thing:</span>
+					<input class="form-control" id="project_source" name="project_source">
+				</div>
+
+				<label class="form-label" for="attributions">Attributions</label>
+				<div class="mb-3">
+					<input class="form-control" id="attributions" name="attributions" placeholder="cc, sharealike">
+				</div>
+
+				<label clas="" for="">Printer type</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<label clas="" for="">Filament type</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<label clas="" for="">Filament brand</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<label clas="" for="">Slicer</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<label clas="" for="">Extruder temp</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<label clas="" for="">Print Bed Temp</label>
+				<div class="">
+					<input class="" id="" name="" placeholder="">
+				</div>
+
+				<div class="container border mb-3 p-3">
+					<h2>Print Settings</h2>
+					<table class="files" id="files">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Setting Name</th>
+								<th scope="col">Setting Information</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%- include('../partials/print_file', {num:1}); %>
+						</tbody>
+					</table>
+					<button type="button" id="add-file" class="btn btn-primary">Add Setting</button>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</main>
+
+	<footer>
+		<%- include('../partials/footer'); %>
+	</footer>
+</body>
+
+</html>

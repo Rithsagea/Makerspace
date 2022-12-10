@@ -36,58 +36,69 @@ const upload = multer();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-app.use('/views', express.static(__dirname + '/views'));
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use("/views", express.static(__dirname + "/views"));
 
-app.get('/', (req, res) => {
-	res.render('pages/index');
+app.get("/", (req, res) => {
+  res.render("pages/index");
 });
 
-app.get('/form', (req, res) => {
-	res.render('pages/form');
+app.get("/projectForm", (req, res) => {
+  res.render("pages/projectForm");
 });
 
-app.get('/project', (req, res) => {
-	projectCollection.find().toArray().then(projects => {
-		res.render('pages/project_index', { projects: projects });
-	});
+app.get("/printForm", (req, res) => {
+  res.render("pages/printForm");
 });
 
-app.get('/project/:projectId', (req, res) => {
-	projectCollection.findOne({ '_id': ObjectId(req.params.projectId) }).then(project => {
-		res.render('pages/project', project);
-	});
+app.get("/project", (req, res) => {
+  projectCollection
+    .find()
+    .toArray()
+    .then((projects) => {
+      res.render("pages/project_index", { projects: projects });
+    });
 });
 
-app.get('/file/:fileId', (req, res) => {
-	fileCollection.findOne({ '_id': ObjectId(req.params.fileId) }).then(file => {
-		var readStream = new stream.PassThrough();
-		readStream.end(Buffer.from(file.data.buffer));
-
-		res.set('Content-disposition', 'attachment; filename=' + file.name);
-		res.set('Content-Type', 'text/plain');
-
-		readStream.pipe(res);
-	});
+app.get("/project/:projectId", (req, res) => {
+  projectCollection
+    .findOne({ _id: ObjectId(req.params.projectId) })
+    .then((project) => {
+      res.render("pages/project", project);
+    });
 });
 
-app.post('/api/form', upload.any(), (req, res) => {
-	console.log(req.body);
-	projectCollection.insertOne(req.body).then(result => {
-		res.send(result.insertedId.toJSON());
-		console.log(`Uploaded Project: ${result.insertedId.toString()}`);
-	});
+app.get("/file/:fileId", (req, res) => {
+  fileCollection.findOne({ _id: ObjectId(req.params.fileId) }).then((file) => {
+    var readStream = new stream.PassThrough();
+    readStream.end(Buffer.from(file.data.buffer));
+
+    res.set("Content-disposition", "attachment; filename=" + file.name);
+    res.set("Content-Type", "text/plain");
+
+    readStream.pipe(res);
+  });
 });
 
-app.post('/api/file', upload.any(), (req, res) => {
-	let file = req.files[0];
-	fileCollection.insertOne({
-		name: file.originalname,
-		data: file.buffer
-	}).then(result => {
-		res.send(result.insertedId.toString());
-	});
+app.post("/api/form", upload.any(), (req, res) => {
+  console.log(req.body);
+  projectCollection.insertOne(req.body).then((result) => {
+    res.send(result.insertedId.toJSON());
+    console.log(`Uploaded Project: ${result.insertedId.toString()}`);
+  });
+});
+
+app.post("/api/file", upload.any(), (req, res) => {
+  let file = req.files[0];
+  fileCollection
+    .insertOne({
+      name: file.originalname,
+      data: file.buffer,
+    })
+    .then((result) => {
+      res.send(result.insertedId.toString());
+    });
 });
 
 const httpServer = http.createServer(app);
