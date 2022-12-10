@@ -1,17 +1,36 @@
+const { db_url, site_url } = require('./config.json');
+
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
 const express = require('express');
 const multer = require('multer');
-const { MongoClient, ObjectId } = require("mongodb");
 const bodyparser = require('body-parser');
 const stream = require('stream');
 
-const { db_url, port } = require('./config.json');
+// Certificate
+const privateKey = fs.readFileSync(`/etc/letsencrypt/live/${site_url}/privkey.pem`, 'utf8');
+const certificate = fs.readFileSync(`/etc/letsencrypt/live/${site_url}/cert.pem`, 'utf8');
+const ca = fs.readFileSync(`/etc/letsencrypt/live/${site_url}/chain.pem`, 'utf8');
+
+const credentials = {
+	key: privateKey,
+	cert: certificate,
+	ca: ca
+};
+
+// Mongo
+
+const { MongoClient, ObjectId } = require("mongodb");
 const client = new MongoClient(db_url);
 const db = client.db('makerspace');
 const projectCollection = db.collection('projects');
 const fileCollection = db.collection('files');
 
-const app = express();
+// Web Server
 
+const app = express();
 const upload = multer();
 
 app.use(bodyparser.json());
@@ -71,6 +90,13 @@ app.post('/api/file', upload.any(), (req, res) => {
 	});
 });
 
-app.listen(port, () => {
-	console.log(`Makerspace server listening on port ${port}`);
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(80, () => {
+	console.log('HTTP Server running on port 80');
+});
+
+httpsServer.listen(443, () => {
+	console.log('HTTPS Server running on port 443');
 });
