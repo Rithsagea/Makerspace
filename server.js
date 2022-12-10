@@ -25,8 +25,12 @@ app.get("/", (req, res) => {
   res.render("pages/index");
 });
 
-app.get("/form", (req, res) => {
-  res.render("pages/form");
+app.get("/projectForm", (req, res) => {
+  res.render("pages/projectForm");
+});
+
+app.get("/printForm", (req, res) => {
+  res.render("pages/printForm");
 });
 
 app.get("/project", (req, res) => {
