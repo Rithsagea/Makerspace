@@ -81,16 +81,26 @@ app.get("/file/:fileId", (req, res) => {
   });
 });
 
-app.post("/api/form", upload.any(), (req, res) => {
+app.post("/api/form/project", upload.any(), (req, res) => {
   console.log(req.body);
   projectCollection.insertOne(req.body).then((result) => {
-    res.send(result.insertedId.toJSON());
+    res.status(200).send(result.insertedId.toJSON());
     console.log(`Uploaded Project: ${result.insertedId.toString()}`);
   });
 });
 
+app.post("/api/form/print", (req, res) => {
+  projectCollection.updateOne({ _id: ObjectId(req.body.project_id) }, {$push: {prints: req.body}});
+  res.status(200).send("Succesfully submitted print!");
+});
+
 app.post("/api/file", upload.any(), (req, res) => {
   let file = req.files[0];
+  if(file == null) {
+    res.status(400).send("No File Provided!");
+    return;
+  }
+
   fileCollection
     .insertOne({
       name: file.originalname,

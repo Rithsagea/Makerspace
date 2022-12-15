@@ -1,0 +1,54 @@
+<div class="grid-item">
+  <div class="card" style="margin:0.5rem; width:28rem;">
+    <div class="card-body">
+      <h4 class="card-title"><%=print.print_name%></h4>
+      <h5 class="card-title">Printer Info</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td scope="col">Printer Type</td>
+            <td scope="col"><%=print.printer_type%></td>
+          </tr>
+
+          <tr>
+            <td scope="col">Filament Type</td>
+            <td scope="col"><%=print.filament_type%></td>
+          </tr>
+
+          <tr>
+            <td scope="col">Filament Brand</td>
+            <td scope="col"><%=print.filament_brand%></td>
+          </tr>
+
+          <tr>
+            <td scope="col">Slicer</td>
+            <td scope="col"><%=print.slicer%></td>
+          </tr>
+
+          <tr>
+            <td scope="col">Extruder Temperature</td>
+            <td scope="col"><%=print.extruder_temperature%></td>
+          </tr>
+          
+          <tr>
+            <td scope="col">Print Bed Temperature</td>
+            <td scope="col"><%=print.print_bed_temperature%></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5 class="card-title">Print Settings</h5>
+      <table class="table">
+        <tbody>
+          <%print.settings.forEach(setting => { %>
+            <tr>
+              <td scope="col"><%=setting.name%></td>
+              <td scope="col"><%=setting.value%></td>
+            </tr>
+          <%})%>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,8 @@ async function uploadFile(file) {
 		body: formData
 	});
 
-	return result.text();
+	if(result.status == 200)
+		return result.text();
 }
 
 async function submitData(formData) {
@@ -38,7 +39,7 @@ async function submitData(formData) {
 		data.files.push(file);
 	}
 
-	const res = await fetch('/api/form', {
+	const res = await fetch('/api/form/project', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

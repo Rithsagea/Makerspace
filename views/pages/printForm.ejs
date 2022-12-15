@@ -3,7 +3,8 @@
 
 <head>
 	<%- include('../partials/head'); %>
-		<title>Makerspace Project Form</title>
+	<script src="/printForm.js"></script>
+		<title>Makerspace Print Form</title>
 </head>
 
 <body>
@@ -18,55 +19,50 @@
 			<hr>
 
 			<form id="form" action="/api/form" method="POST" enctype="multipart/form-data">
-				<label class="form-label" for="project_name">Print Name</label>
-				<div class="mb-3">
-					<input class="form-control" id="project_name" name="project_name">
-				</div>
-
-				<label class="form-label" for="project_source">Print Source</label>
+				<label class="form-label" for="project_id">Project Link</label>
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">https://www.thingiverse.com/thing:</span>
-					<input class="form-control" id="project_source" name="project_source">
+					<span class="input-group-text" id="basic-addon3">https://makerspace.tempera.dev/project/</span>
+					<input class="form-control" id="project_id" name="project_id">
 				</div>
 
-				<label class="form-label" for="attributions">Attributions</label>
+				<label class="form-label" for="print_name">Print Name</label>
 				<div class="mb-3">
-					<input class="form-control" id="attributions" name="attributions" placeholder="cc, sharealike">
+					<input class="form-control" id="print_name" name="print_name">
 				</div>
 
-				<label clas="" for="">Printer type</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label class="form-label" for="printer_type">Printer Type</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="printer_type" name="printer_type">
 				</div>
 
-				<label clas="" for="">Filament type</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label class="form-label" for="filament_type">Filament Type</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="filament_type" name="filament_type">
 				</div>
 
-				<label clas="" for="">Filament brand</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label class="form-label" for="filament_brand">Filament Brand</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="filament_brand" name="filament_brand">
 				</div>
 
-				<label clas="" for="">Slicer</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label class="form-label" for="slicer">Slicer</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="slicer" name="slicer">
 				</div>
 
-				<label clas="" for="">Extruder temp</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label class="form-label" for="extruder_temperature">Extruder Temperature</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="extruder_temperature" name="extruder_temperature">
 				</div>
 
-				<label clas="" for="">Print Bed Temp</label>
-				<div class="">
-					<input class="" id="" name="" placeholder="">
+				<label clas="form-label" for="print_bed_temperature">Print Bed Temperature</label>
+				<div class="input-group mb-3">
+					<input class="form-control" id="print_bed_temperature" name="print_bed_temperature">
 				</div>
 
 				<div class="container border mb-3 p-3">
 					<h2>Print Settings</h2>
-					<table class="files" id="files">
+					<table class="table settings" id="settings">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -78,7 +74,7 @@
 							<%- include('../partials/print_file', {num:1}); %>
 						</tbody>
 					</table>
-					<button type="button" id="add-file" class="btn btn-primary">Add Setting</button>
+					<button type="button" id="add-setting" class="btn btn-primary">Add Setting</button>
 				</div>
 
 				<button type="submit" class="btn btn-primary">Submit</button>
